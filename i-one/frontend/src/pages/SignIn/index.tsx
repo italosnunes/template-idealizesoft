@@ -9,12 +9,12 @@ import getValidationErrors from '../../utils/getValidationErrors';
 import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
 
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.png';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import { Container, Content, AnimationContainer, Background } from './styles';
+import { Container, Content, AnimationContainer } from './styles';
 
 interface SignInFormData {
     email: string;
@@ -24,7 +24,7 @@ interface SignInFormData {
 const SignIn: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
 
-    const { signIn } = useAuth();
+    const { signInCompany } = useAuth();
     const { addToast } = useToast();
     const history = useHistory();
 
@@ -43,10 +43,11 @@ const SignIn: React.FC = () => {
                     abortEarly: false,
                 });
 
-                await signIn({
+                await signInCompany({
                     email: data.email,
                     password: data.password,
                 });
+
                 history.push('/dashboard');
             } catch (err) {
                 if (err instanceof Yup.ValidationError) {
@@ -63,7 +64,7 @@ const SignIn: React.FC = () => {
                 });
             }
         },
-        [signIn, addToast],
+        [signInCompany, addToast, history],
     );
 
     return (
@@ -99,7 +100,6 @@ const SignIn: React.FC = () => {
                     </Link>
                 </AnimationContainer>
             </Content>
-            <Background />
         </Container>
     );
 };

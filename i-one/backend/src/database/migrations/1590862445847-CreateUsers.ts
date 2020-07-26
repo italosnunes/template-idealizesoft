@@ -27,6 +27,16 @@ export default class CreateUsers1590862445847 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'isAdm',
+            type: 'boolean',
+            default: false,
+          },
+          {
+            name: 'alterPassword',
+            type: 'boolean',
+            default: false,
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',

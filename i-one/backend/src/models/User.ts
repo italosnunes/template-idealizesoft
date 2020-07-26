@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import {
   Entity,
   Column,
@@ -23,6 +22,9 @@ class User {
 
   @Column()
   avatar: string;
+
+  @Column()
+  isAdm: boolean;
 
   @CreateDateColumn()
   created_at: Date;
