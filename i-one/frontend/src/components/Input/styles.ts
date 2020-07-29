@@ -7,12 +7,12 @@ interface ContainerProps {
     isErrored: boolean;
 }
 export const Container = styled.div<ContainerProps>`
-  background: #ddd;
+  background: #f3f3f3;
   border-radius: 10px;
   padding: 16px;
   width: 100%;
 
-  border: 2px solid #ddd;
+  border: 2px solid #f3f3f3;
   color: #666360;
 
   display:flex;

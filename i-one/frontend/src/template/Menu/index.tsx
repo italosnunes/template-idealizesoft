@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiMail, FiHome, FiLayers, FiUsers } from 'react-icons/fi';
+import { FiHome, FiLayers, FiUsers } from 'react-icons/fi';
 import MenuItem from '../MenuItem';
 import MenuTree from '../MenuTree';
 import logo from '../../assets/logo-branco.png';

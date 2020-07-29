@@ -8,3 +8,15 @@ export const Content = styled.div`
     border-radius: 4px;
     box-shadow: 1px 1px 2px #000;
 `;
+
+export const MenuButton = styled.footer`
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+
+    button {
+        max-width: 150px;
+        height: 50px;
+        margin-right: 10px;
+    }
+`;

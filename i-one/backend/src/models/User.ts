@@ -26,6 +26,9 @@ class User {
   @Column()
   isAdm: boolean;
 
+  @Column()
+  alterPassword: boolean;
+
   @CreateDateColumn()
   created_at: Date;
 

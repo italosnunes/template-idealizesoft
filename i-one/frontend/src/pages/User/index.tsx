@@ -4,6 +4,7 @@ import { FiUsers } from 'react-icons/fi';
 import { Container, Title, Menu, Content } from './styles';
 
 import NewUser from './NewUser';
+import ListUser from './ListUser';
 
 const User: React.FC = () => {
     const [newUser, setNewUser] = useState(false);
@@ -26,7 +27,7 @@ const User: React.FC = () => {
             </Menu>
             <Content>
                 {newUser && <NewUser />}
-                {!newUser && <h1> Lista Usuário</h1>}
+                {!newUser && <ListUser />}
             </Content>
         </Container>
     );

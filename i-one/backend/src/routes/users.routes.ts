@@ -5,9 +5,18 @@ import CreateUserService from '../services/CreateUserService';
 import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import FindUserService from '../services/FindUserService';
 
 const usersRouter = Router();
 const upload = multer(uploadConfig);
+
+usersRouter.get('/', async (request, response) => {
+  const listUsers = new FindUserService();
+
+  const users = await listUsers.execute();
+
+  return response.json(users);
+});
 
 usersRouter.post('/', async (request, response) => {
   const { name, email, password } = request.body;
