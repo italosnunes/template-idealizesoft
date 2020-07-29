@@ -7,12 +7,13 @@ interface Props {
     path: string;
     label: string;
     icon?: React.ComponentType<IconBaseProps>;
+    iconSize?: number;
 }
-const MenuItem: React.FC<Props> = ({ path, icon: Icon, label }) => (
+const MenuItem: React.FC<Props> = ({ path, icon: Icon, label, iconSize }) => (
     <Container>
         <li>
             <a href={path}>
-                {Icon && <Icon size={20} />}
+                {Icon && <Icon size={iconSize} color="#fff" />}
                 <small>{label}</small>
             </a>
         </li>

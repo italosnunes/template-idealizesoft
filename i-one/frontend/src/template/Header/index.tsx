@@ -1,21 +1,11 @@
 import React from 'react';
-
+import { FiCheckCircle } from 'react-icons/fi';
 import { Container } from './styles';
 
 const Header: React.FC = () => (
     <Container>
-        <a href="/#/" className="logo">
-            <span className="logo-mini">
-                idealize
-                <b>soft</b>
-            </span>
-            <span className="logo-lg">
-                <b>Idealizesoft</b>
-            </span>
-        </a>
-        <nav className="navbar">
-            <button type="button">Toggle</button>
-        </nav>
+        <FiCheckCircle size={20} color="#660066" />
+        <h2>Colaboradores</h2>
     </Container>
 );
 

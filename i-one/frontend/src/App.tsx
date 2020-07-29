@@ -7,13 +7,10 @@ import AppProvider from './hooks';
 
 import Routes from './routes';
 
-import Template from './template';
-
 const App: React.FC = () => (
     <Router>
         <AppProvider>
             <Routes />
-            <Template />
         </AppProvider>
 
         <GlobalStyle />

@@ -6,14 +6,18 @@ import Footer from './Footer';
 
 import { Container, Grid, Content, ContentFooter } from './styles';
 
-const Template: React.FC = () => (
+interface Props {
+    component: React.ComponentType;
+}
+
+const Template: React.FC<Props> = ({ component: Component }) => (
     <Container>
-        <Header />
         <Grid>
             <SideBar />
             <ContentFooter>
+                <Header />
                 <Content>
-                    <h1>Teste</h1>
+                    <Component />
                 </Content>
                 <Footer />
             </ContentFooter>
