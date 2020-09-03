@@ -9,7 +9,9 @@ export const Grid = styled.section`
     display: flex;
     flex-direction: row;
     padding: 0 5px;
-    height: 100vh;
+    flex: 1;
+    min-height: 100vh;
+
     background: rgb(51, 0, 51);
     background: linear-gradient(
         0deg,

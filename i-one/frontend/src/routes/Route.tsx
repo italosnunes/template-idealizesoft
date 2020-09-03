@@ -4,6 +4,7 @@ import {
     RouteProps as ReactDOMRouteProps,
     Redirect,
 } from 'react-router-dom';
+
 import { useAuth } from '../hooks/auth';
 
 import Template from '../template';
@@ -11,11 +12,13 @@ import Template from '../template';
 interface RouteProps extends ReactDOMRouteProps {
     isPrivate?: boolean;
     component: React.ComponentType;
+    template?: boolean;
 }
 
 const Route: React.FC<RouteProps> = ({
     isPrivate = false,
     component,
+    template = false,
     ...rest
 }) => {
     const { user } = useAuth();
@@ -25,7 +28,7 @@ const Route: React.FC<RouteProps> = ({
             {...rest}
             render={({ location }) => {
                 return isPrivate === !!user ? (
-                    <Template component={component} />
+                    <Template component={component} template={template} />
                 ) : (
                     <Redirect
                         to={{
@@ -40,3 +43,7 @@ const Route: React.FC<RouteProps> = ({
 };
 
 export default Route;
+
+/* return isPrivate && isPrivate === !!user ? (
+    <Template component={component} />
+    ) : ( */

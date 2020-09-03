@@ -6,6 +6,7 @@ import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 import FindUserService from '../services/FindUserService';
+import AlterPasswordUserService from '../services/AlterPasswordUserService';
 
 const usersRouter = Router();
 const upload = multer(uploadConfig);
@@ -27,6 +28,23 @@ usersRouter.post('/', async (request, response) => {
     name,
     email,
     password,
+  });
+
+  delete user.password;
+
+  return response.json(user);
+});
+
+usersRouter.put('/alter-password', async (request, response) => {
+  const { email, passwordOld, password, passwordConfirm } = request.body;
+
+  const alterPassword = new AlterPasswordUserService();
+
+  const user = await alterPassword.execute({
+    email,
+    passwordOld,
+    password,
+    passwordConfirm,
   });
 
   delete user.password;

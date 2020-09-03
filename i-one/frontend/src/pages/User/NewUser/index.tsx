@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { useHistory } from 'react-router-dom';
+
 import { useToast } from '../../../hooks/toast';
 import api from '../../../services/api';
 import Input from '../../../components/Input';
@@ -17,7 +17,7 @@ interface FormData {
 }
 const NewUser: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
-    const history = useHistory();
+
     const { addToast } = useToast();
 
     /* const handleCancel = useCallback(() => {
@@ -43,7 +43,6 @@ const NewUser: React.FC = () => {
                     ...data,
                     password: 'idealizesoft',
                 });
-                history.push('/dashboard');
 
                 addToast({
                     type: 'success',

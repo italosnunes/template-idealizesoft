@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiHome, FiLayers, FiUsers } from 'react-icons/fi';
+import { FiHome, FiLayers, FiUsers, FiUpload } from 'react-icons/fi';
 import MenuItem from '../MenuItem';
 import MenuTree from '../MenuTree';
 import logo from '../../assets/logo-branco.png';
@@ -18,6 +18,12 @@ const Menu: React.FC = () => (
                     iconSize={15}
                 />
             </MenuTree>
+            <MenuItem
+                path="/import-order"
+                label="Importar Planilha"
+                icon={FiUpload}
+                iconSize={20}
+            />
         </ul>
     </Container>
 );

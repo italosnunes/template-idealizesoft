@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+    width: 96%;
+`;
 
 export const Content = styled.div`
-    width: 100%;
     border: solid 1px #660066;
     border-radius: 4px;
     box-shadow: 1px 1px 2px #000;
@@ -16,6 +17,7 @@ export const MenuButton = styled.footer`
 
     button {
         max-width: 150px;
+        min-width: 150px;
         height: 50px;
         margin-right: 10px;
     }

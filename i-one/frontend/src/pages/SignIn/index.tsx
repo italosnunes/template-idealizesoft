@@ -28,6 +28,10 @@ const SignIn: React.FC = () => {
     const { addToast } = useToast();
     const history = useHistory();
 
+    const handleSaler = () => {
+        history.push('/signin-user');
+    };
+
     const handleSubmit = useCallback(
         async (data: SignInFormData) => {
             try {
@@ -48,7 +52,7 @@ const SignIn: React.FC = () => {
                     password: data.password,
                 });
 
-                history.push('/dashboard');
+                history.push('/admin/dashboard');
             } catch (err) {
                 if (err instanceof Yup.ValidationError) {
                     const errors = getValidationErrors(err);
@@ -71,7 +75,6 @@ const SignIn: React.FC = () => {
         <Container>
             <Content>
                 <AnimationContainer>
-                    <img src={logo} alt="GoBarber" />
                     <Form ref={formRef} onSubmit={handleSubmit}>
                         <h1>Faça seu login</h1>
 

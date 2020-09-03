@@ -1,4 +1,5 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
+import { useHistory } from 'react-router';
 import api from '../services/api';
 
 interface AuthState {
@@ -11,16 +12,26 @@ interface SignInCredentials {
     password: string;
 }
 
+interface AlterPassword {
+    email: string;
+    passwordOld: string;
+    password: string;
+    passwordConfirm: string;
+}
+
 interface AuthContextData {
     user: object;
     signIn(credentials: SignInCredentials): Promise<void>;
     signInCompany(credentials: SignInCredentials): Promise<void>;
     signOut(): void;
+    alterPassword(credentials: AlterPassword): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
+    const history = useHistory();
+
     const [data, setData] = useState<AuthState>(() => {
         const token = localStorage.getItem('@Idealizesoft:token');
         const user = localStorage.getItem('@Idealizesoft:user');
@@ -46,23 +57,45 @@ const AuthProvider: React.FC = ({ children }) => {
         setData({ token, user });
     }, []);
 
-    const signIn = useCallback(async ({ email, password }) => {
-        const response = await api.post('sessions', {
-            email,
-            password,
-        });
+    const alterPassword = useCallback(
+        async ({ email, passwordOld, password, passwordConfirm }) => {
+            await api.put('users/alter-password', {
+                email,
+                passwordOld,
+                password,
+                passwordConfirm,
+            });
+        },
+        [],
+    );
+    const signIn = useCallback(
+        async ({ email, password }) => {
+            const response = await api.post('sessions', {
+                email,
+                password,
+            });
 
-        const { token, user } = response.data;
+            const { token, user } = response.data;
 
-        localStorage.setItem('@GoBarber:token', token);
-        localStorage.setItem('@GoBarber:user', JSON.stringify(user));
+            if (user.alterPassword) {
+                history.push({
+                    pathname: '/alter-password',
+                    state: { email: user.email },
+                });
+                return;
+            }
 
-        setData({ token, user });
-    }, []);
+            localStorage.setItem('@Idealizesoft:token', token);
+            localStorage.setItem('@Idealizesoft:user', JSON.stringify(user));
+
+            setData({ token, user });
+        },
+        [history],
+    );
 
     const signOut = useCallback(() => {
-        localStorage.removeItem('@GoBarber:token');
-        localStorage.removeItem('@GoBarber:user');
+        localStorage.removeItem('@Idealizesoft:token');
+        localStorage.removeItem('@Idealizesoft:user');
 
         setData({} as AuthState);
     }, []);
@@ -74,6 +107,7 @@ const AuthProvider: React.FC = ({ children }) => {
                 signIn,
                 signOut,
                 signInCompany,
+                alterPassword,
             }}
         >
             {children}
