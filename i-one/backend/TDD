@@ -1,0 +1,11 @@
+0. Service
+1. Cria a entity
+2. Cria a interface
+3. Cria o Fake
+4. Cria o Teste
+5. Implementa o Service
+
+
+
+
+6. Injeção de dependencias (shared/container/indexs)
