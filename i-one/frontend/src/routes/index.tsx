@@ -12,6 +12,8 @@ import User from '../pages/User';
 import ImportOrder from '../pages/ImportOrder';
 import DashboardUser from '../pages/DashboardUser';
 
+import ProductCategory from '../pages/Product/Category';
+
 const Routes: React.FC = () => (
     <Switch>
         <Route path="/" exact component={SignInUser} />
@@ -27,10 +29,17 @@ const Routes: React.FC = () => (
             template
         />
 
-        <Route path="/user" component={User} isPrivate template />
+        <Route path="/admin/user" component={User} isPrivate template />
         <Route
             path="/import-order"
             component={ImportOrder}
+            isPrivate
+            template
+        />
+
+        <Route
+            path="/admin/product-category"
+            component={ProductCategory}
             isPrivate
             template
         />

@@ -9,6 +9,7 @@ import companiesRouter from '@modules/companies/infra/http/routes/companies.rout
 import orderRouter from '@modules/orders/infra/http/routes/order.routes';
 import appointmentsRouter from '@modules/appointments/infra/http/routes/appointments.routes';
 import providersRouter from '@modules/appointments/infra/http/routes/providers.routes';
+import productCategoriesRouter from '@modules/products/infra/http/routes/productCategories.routes';
 
 const routes = Router();
 
@@ -18,6 +19,7 @@ routes.use('/orders', orderRouter);
 routes.use('/password', passwordRouter);
 routes.use('/profile', profileRouter);
 routes.use('/providers', providersRouter);
+routes.use('/product-categories', productCategoriesRouter);
 routes.use('/sessions', sessionsRouter);
 routes.use('/sessions/company', sessionsCompanyRouter);
 routes.use('/users', usersRouter);
