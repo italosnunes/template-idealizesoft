@@ -3,7 +3,7 @@ import { FiHeadphones, FiPlusSquare } from 'react-icons/fi';
 
 import HeaderModules from '../../../components/HeaderModules';
 import ModalCategoryAdd from './ModalCategoryAdd';
-import api from '../../../services/api';
+import api from '../../../services/api'
 
 import { Container, CategoriesContainer } from './styles';
 import Category from '../../../components/Category';
@@ -11,7 +11,9 @@ import Category from '../../../components/Category';
 interface ICategory {
     name: string;
     id: string;
+    avatar_url?:string;
 }
+
 const ProductCategory: React.FC = () => {
     const [categories, setCategories] = useState<ICategory[]>([]);
     const [editing, setEditing] = useState<ICategory>({} as ICategory);

@@ -7,7 +7,7 @@ import { Container } from './styles';
 interface ICategory {
     id: string;
     name: string;
-    avatar_url: string;
+    avatar_url?: string;
 }
 
 interface ICategoryProps {
